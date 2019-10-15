@@ -56,7 +56,7 @@ while true:
       of "h", "height":
         height = p.val.string.parseInt
       of "s", "scale":
-        scale = p.val.string.parseInt
+        scale = p.val.string.parseInt.nextPowerOfTwo()
       of "f", "framerate":
         framerate = p.val.string.parseInt
   else:
