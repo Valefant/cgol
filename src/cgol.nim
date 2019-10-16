@@ -1,6 +1,5 @@
 import conway
 import math
-import os
 import parseopt
 import sequtils
 import sdl2/sdl
@@ -63,10 +62,10 @@ while true:
     discard
 
 let
-  scaledWidth = int(width / scale)
-  scaledHeight = int(height / scale)
+  scaledWidth = width div scale
+  scaledHeight = height div scale
 
-# Sequences are used for the grid because the openArray interface does not support nesting.
+# Sequences are used for the grid because the openArray interface does not support nested structures.
 # Therefore a 2d array cannot be passed to functions without knowing their dimensions.
 var currentGrid = newSeqWith(scaledHeight, newSeq[int](scaledWidth))
 seed(currentGrid)
@@ -119,6 +118,6 @@ while not done:
       newGrid[y][x] = transition(bool(currentGrid[y][x]), count)
 
   currentGrid = newGrid
-  sdl.delay(uint32(1000 / framerate))
+  sdl.delay((1000 div framerate).uint32)
 
 shutdown(window)
