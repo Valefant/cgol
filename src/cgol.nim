@@ -62,6 +62,7 @@ while true:
     discard
 
 let
+  fps = (1000 div framerate).uint32
   scaledWidth = width div scale
   scaledHeight = height div scale
 
@@ -118,6 +119,6 @@ while not done:
       newGrid[y][x] = transition(bool(currentGrid[y][x]), count)
 
   currentGrid = newGrid
-  sdl.delay((1000 div framerate).uint32)
+  sdl.delay(fps)
 
 shutdown(window)
